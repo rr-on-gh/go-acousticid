@@ -1,0 +1,10 @@
+language: go
+
+go:
+  - 1.4
+  - tip
+
+install:
+  - go get github.com/stretchr/testify
+
+script: go test
