@@ -4,6 +4,7 @@ import (
 	"strings"
 	"strconv"
 	"os"
+	"fmt"
 )
 
 type Fingerprint struct {
@@ -12,7 +13,13 @@ type Fingerprint struct {
 }
 
 func (f *Fingerprint) Get(file string) {
-	out, err := exec.Command(os.Getenv("FPCALC_BINARY_PATH"), file).Output()
+	fpcalc := "fpcalc"
+	if os.Getenv("FPCALC_BINARY_PATH") == nil {
+		fmt.Println("Environment variable FPCALC_BINARY_PATH not set. Will use fpcalc in PATH as the default fingerprinting application")
+	} else {
+		fpcalc = os.Getenv("FPCALC_BINARY_PATH")
+	}
+	out, err := exec.Command(fpcalc, file).Output()
 	if err != nil {
 		panic(err)
 	}
