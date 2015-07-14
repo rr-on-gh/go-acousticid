@@ -6,6 +6,7 @@ go:
 
 install:
   - go get github.com/stretchr/testify
+  - go get github.com/mikkyang/id3-go
 
 notifications:
   email:
