@@ -22,5 +22,5 @@ script:
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
     - ls -ltr /usr/local/bin/
     - sudo chmod +x /usr/local/bin/fpcalc
-    - /usr/local/bin/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
+    - sudo /usr/local/bin/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
     - go test
