@@ -11,7 +11,7 @@ type Fingerprint struct {
 }
 
 func (f *Fingerprint) Get(file string) {
-	out, err := exec.Command("./fpcalc", file).Output()
+	out, err := exec.Command("fpcalc", file).Output()
 	if err != nil {
 		panic(err)
 	}

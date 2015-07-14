@@ -11,4 +11,4 @@ notifications:
   email:
     - rakzrao81@gmail.com
 
-script: ls -ltr && go test
+script: export PATH=$PATH:$TRAVIS_BUILD_DIR && ls -ltr && go test
