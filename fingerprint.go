@@ -3,6 +3,7 @@ import (
 	"os/exec"
 	"strings"
 	"strconv"
+	"os"
 )
 
 type Fingerprint struct {
@@ -11,7 +12,7 @@ type Fingerprint struct {
 }
 
 func (f *Fingerprint) Get(file string) {
-	out, err := exec.Command("fpcalc", file).Output()
+	out, err := exec.Command(os.Getenv("FPCALC_BINARY_PATH"), file).Output()
 	if err != nil {
 		panic(err)
 	}
