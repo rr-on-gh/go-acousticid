@@ -21,5 +21,5 @@ script:
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
     - /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
-    - fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
+    - /usr/local/bin/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
     - go test
