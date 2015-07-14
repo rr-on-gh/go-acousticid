@@ -1,15 +1,11 @@
 language: go
-sudo: required
+sudo: false
 go:
   - 1.4
   - tip
 
-before_install:
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR
-
 install:
   - go get github.com/stretchr/testify
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR
 
 notifications:
   email:
