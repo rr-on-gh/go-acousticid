@@ -11,4 +11,4 @@ notifications:
   email:
     - rakzrao81@gmail.com
 
-script: ./fpcalc test.mp3 && export PATH=$PATH:$TRAVIS_BUILD_DIR && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid && go test
+script: export PATH=$PATH:$TRAVIS_BUILD_DIR && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid && /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc test.mp3 && go test
