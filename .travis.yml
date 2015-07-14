@@ -4,11 +4,15 @@ go:
   - 1.4
   - tip
 
+before_install:
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR
+
 install:
   - go get github.com/stretchr/testify
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR
 
 notifications:
   email:
     - rakzrao81@gmail.com
 
-script: export PATH=$PATH:$TRAVIS_BUILD_DIR && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid && /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc test.mp3 && go test
+script: ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc && ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid && /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc test.mp3 && go test
