@@ -7,4 +7,4 @@ go:
 install:
   - go get github.com/stretchr/testify
 
-script: go test
+script: ls -ltr && go test
