@@ -20,6 +20,7 @@ script:
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
-    - /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
+    - ls -ltr /usr/local/bin/
+    - chmod +x /usr/local/bin/fpcalc
     - /usr/local/bin/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
     - go test
