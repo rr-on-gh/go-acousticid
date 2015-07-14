@@ -18,5 +18,6 @@ notifications:
 script:
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc
     - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid
-    - /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc test.mp3
+    - ls -ltr /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
+    - /home/travis/gopath/src/github.com/raks81/go-acousticid/fpcalc /home/travis/gopath/src/github.com/raks81/go-acousticid/test.mp3
     - go test
