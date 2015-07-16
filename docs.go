@@ -26,7 +26,4 @@ package acousticid
 
  id3-utils.go
 
- mp3-file-ops.go
-
- main.go
  */

@@ -9,11 +9,11 @@ import (
 
 type Fingerprint struct {
 	fingerprint string
-	duration float64
+	duration int
 }
 
 func (f *Fingerprint) Get(file string) {
-	fpcalc := "fpcalc"
+	fpcalc := "./fpcalc"
 	if os.Getenv("FPCALC_BINARY_PATH") == "" {
 		fmt.Println("Environment variable FPCALC_BINARY_PATH not set. Will use fpcalc in PATH as the default fingerprinting application")
 	} else {
@@ -28,7 +28,7 @@ func (f *Fingerprint) Get(file string) {
 	for _, s := range outstrs  {
 		if strings.Index(s, "DURATION=") == 0 {
 			ds := strings.Split(s, "=")[1]
-			f.duration, _ = strconv.ParseFloat(ds, 64)
+			f.duration, _ = strconv.Atoi(ds)
 		} else if strings.Index(s, "FINGERPRINT=") == 0 {
 			f.fingerprint = strings.Split(s, "=")[1]
 		}
