@@ -7,7 +7,7 @@ import (
 )
 
 func TestAddId3ToFile(t *testing.T) {
-	_, err := exec.Command("cp", "test.mp3", "test_id3_write.mp3").Output()
+	_, err := exec.Command("cp", "_template/test.mp3", "test_id3_write.mp3").Output()
 	if err != nil {
 		panic(err)
 	}
@@ -22,5 +22,6 @@ func TestAddId3ToFile(t *testing.T) {
 	assert.Equal(t, mp3File.Title(), "Test Title")
 	assert.Equal(t, mp3File.Album(), "Album Name")
 	assert.Equal(t, mp3File.Artist(), "Test Artist")
+
 	exec.Command("rm", "test_id3_write.mp3").Output()
 }
