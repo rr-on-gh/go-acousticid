@@ -21,20 +21,22 @@ type AcousticidRequest struct {
 }
 
 //Generated using http://json2struct.mervine.net/
+type Result struct {
+	ID         string `json:"id"`
+	Recordings []struct {
+		Artists  []struct {
+			ID   string `json:"id"`
+			Name string `json:"name"`
+		} `json:"artists"`
+		Duration float64    `json:"duration"`
+		ID       string `json:"id"`
+		Title    string `json:"title"`
+	} `json:"recordings"`
+	Score      float64 `json:"score"`
+}
+
 type AcousticidResponse struct {
-	Results []struct {
-		ID         string `json:"id"`
-		Recordings []struct {
-			Artists  []struct {
-				ID   string `json:"id"`
-				Name string `json:"name"`
-			} `json:"artists"`
-			Duration float64    `json:"duration"`
-			ID       string `json:"id"`
-			Title    string `json:"title"`
-		} `json:"recordings"`
-		Score      float64 `json:"score"`
-	} `json:"results"`
+	Results []Result `json:"results"`
 	Status  string `json:"status"`
 }
 

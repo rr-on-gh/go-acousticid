@@ -2,7 +2,6 @@ package acousticid
 import (
 
 	"strings"
-	"fmt"
 )
 
 func FuzzyMatchString(source string, target string) float64 {
@@ -21,8 +20,8 @@ func FuzzyMatchString(source string, target string) float64 {
 			}
 		}
 	}
-	fmt.Println(count)
+	//fmt.Println(count)
 
 	//calculate percentage match
-	return float64(count) / float64(len(sourcewords)) * 100
+	return float64(count) / float64(len(sourcewords))
 }

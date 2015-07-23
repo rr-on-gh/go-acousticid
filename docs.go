@@ -18,8 +18,8 @@ package acousticid
   	  * Write into the mp3 file //todo
   	* If valid:
   	 * continue //todo
-
- Files:
+  //todo parallel execution
+ Files:1
  acoustic-id.go
 
  id3.go
