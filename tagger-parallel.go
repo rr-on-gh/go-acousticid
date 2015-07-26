@@ -3,6 +3,7 @@ import (
 	"path/filepath"
 	"os"
 	"strings"
+	"strconv"
 )
 
 var filesChan = make(chan string, 100)
@@ -51,21 +52,21 @@ func tagFileParallel(file string, info os.FileInfo, err error) error {
 
 func FingerprintWorker(id int, files <-chan string, fingerPrints chan <- Fingerprint) {
 	for file := range files {
-		log.Info("[ Worker:",id," - Fingerprinting", file, "]")
+		log.Info("[ Worker: " + strconv.FormatInt(int64(id),10) + " - Fingerprinting " +  file + " ]")
 		fingerPrints <- GetFingerprint(file)
 	}
 }
 
 func AcousticidWorker(id int, fingerprints <-chan Fingerprint, results chan <- AcousticidResponse) {
 	for fingerprint := range fingerprints{
-		log.Info("[ Worker:",id," - Finding acoustic id of file with duration", fingerprint.duration, "]")
+		log.Info("[ Worker: " + strconv.FormatInt(int64(id),10) + " - Finding acoustic id of file with duration " + strconv.FormatInt(int64(fingerprint.duration),10) + " ]")
 		results <- GetAcousticId(fingerprint)
 	}
 }
 
 func ID3Worker(id int, id3TagInputs <-chan ID3TagInput) {
 	for id3TagInput := range id3TagInputs {
-		log.Info("[ Worker:",id," - Setting ID3 Tag", id3TagInput.file, "]")
+		log.Info("[ Worker: " + strconv.FormatInt(int64(id),10) + " - Setting ID3 Tag " + id3TagInput.file + " ]")
 		SetID3(id3TagInput.acousticidresponse, id3TagInput.file, id3TagInput.info)
 	}
 }

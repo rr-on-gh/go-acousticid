@@ -51,7 +51,7 @@ func tagFile(file string, info os.FileInfo, err error) error {
 func GetFingerprint(file string) Fingerprint {
 	log.Debug("Fingerprinting" + file + "...")
 	//Get the fingerprint
-	fingerprint := new(Fingerprint)
+	fingerprint := Fingerprint{}
 	fingerprint.Get(file)
 
 	return fingerprint
