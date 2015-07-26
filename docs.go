@@ -12,10 +12,10 @@ package acousticid
   	 * If valid result found: //todo needs refinement
   	  * Make ID3 tag struct  -- DONE
   	  * Write into the mp3 file  -- DONE
-  	 * If no valid result found: //todo
-  	  * Check for details in file name //todo
-  	  * Create the id3 tag struct from file name //todo
-  	  * Write into the mp3 file //todo
+  	 * If no valid result found: //DONE
+  	  * Check for details in file name //DONE
+  	  * Create the id3 tag struct from file name //DONE
+  	  * Write into the mp3 file //DONE
   	* If valid:
   	 * continue //todo
   //todo parallel execution
