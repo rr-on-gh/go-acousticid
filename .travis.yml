@@ -14,4 +14,4 @@ notifications:
 
 script:
     - export FPCALC_BINARY_PATH=./fpcalc64
-    - go test
+    - go test -v
