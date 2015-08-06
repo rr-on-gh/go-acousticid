@@ -5,7 +5,7 @@ import (
 	"os/exec"
 )
 
-func TestTaggerParallel(t *testing.T) {
+func TestParallelTagger(t *testing.T) {
 	log.Debug("Setting up test dir...")
 	os.RemoveAll("_testdir_parallel")
 	_, _ = exec.Command("cp", "-r", "_template", "_testdir_parallel").Output()

@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 	"strings"
 	"github.com/op/go-logging"
-	"strconv"
 )
 
 var log = initLogger()
@@ -31,7 +30,6 @@ func TagDir(start_dir string) {
 
 func tagFile(file string, info os.FileInfo, err error) error {
 
-	log.Info("-----------------------------------------------------------------------------------------------------------------------------------")
 	if err == nil && !info.IsDir() && strings.HasSuffix(info.Name(), ".mp3") {
 
 		//Get fingerprint
@@ -43,13 +41,12 @@ func tagFile(file string, info os.FileInfo, err error) error {
 		//Set ID3 tag
 		SetID3(acousticidresponse, file, info)
 
-		log.Info("-----------------------------------------------------------------------------------------------------------------------------------")
 	}
 	return nil
 }
 
 func GetFingerprint(file string) Fingerprint {
-	log.Debug("Fingerprinting" + file + "...")
+	log.Debug("Fingerprinting %s ...", file)
 	//Get the fingerprint
 	fingerprint := Fingerprint{}
 	fingerprint.Get(file)
@@ -85,7 +82,7 @@ func SetID3(acousticidresponse AcousticidResponse, file string, info os.FileInfo
 				//fmt.Println("match 0 ", matches[0].filename)
 				//break
 			} else {
-				log.Debug("[" + info.Name() + "] --> [Ignoring a acousticid result.]")
+				log.Debug("[ %s ] --> [Ignoring a acousticid result.]", info.Name())
 			}
 		}
 
@@ -108,21 +105,21 @@ func SetID3(acousticidresponse AcousticidResponse, file string, info os.FileInfo
 			}
 			bestMatch = matches[bestMatchIndex]
 			for _, match := range matches {
-				log.Info("Possible Matches: " + "[" + info.Name() + "] --> [" + match.result.Recordings[0].Artists[0].Name + " - " + match.result.Recordings[0].Title + "] [Score:" + strconv.FormatFloat(match.result.Score, 'f', -1, 64) + "]")
+				log.Info("Possible Matches: " + "[ %s ] --> [ %s - " + match.result.Recordings[0].Title + "] [Score: %f]", info.Name(), match.result.Recordings[0].Artists[0].Name, match.result.Score)
 			}
-			log.Info("Best Match: " + "[ " + info.Name() + "] --> [" + bestMatch.result.Recordings[0].Artists[0].Name + " - " + bestMatch.result.Recordings[0].Title + "] [Score:" + strconv.FormatFloat(bestMatch.result.Score, 'f', -1, 64) + "]")
+			log.Info("Best Match: [ %s ] --> [ %s - %s ] [Score: %f]", info.Name(), bestMatch.result.Recordings[0].Artists[0].Name, bestMatch.result.Recordings[0].Title, bestMatch.result.Score)
 			setId3FromMatch(file, bestMatch)
 
 		} else if len(matches) == 1 {
 			bestMatch = matches[bestMatchIndex]
-			log.Info("Only Match: " + "[" + info.Name() + "] --> [" + bestMatch.result.Recordings[0].Artists[0].Name + " - " + bestMatch.result.Recordings[0].Title + "] [Score:" + strconv.FormatFloat(bestMatch.result.Score , 'f', -1, 64) + "]")
+			log.Info("Only Match: [ %s ] --> [ %s - %s ] [Score: %f]", info.Name(), bestMatch.result.Recordings[0].Artists[0].Name, bestMatch.result.Recordings[0].Title, bestMatch.result.Score)
 			setId3FromMatch(file, bestMatch)
 
 		} else {
-			log.Error("No Match: [" + info.Name() + "]")
+			log.Error("No Match: [ %s ]", info.Name())
 		}
 	} else {
-		log.Error("No Match: [" + info.Name() + "]")
+		log.Error("No Match: [ %s ]", info.Name())
 	}
 }
 
