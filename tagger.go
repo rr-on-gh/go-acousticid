@@ -72,7 +72,6 @@ func SetID3(acousticidresponse AcousticidResponse, file string, info os.FileInfo
 	if acousticidresponse.Status == "ok" && len(acousticidresponse.Results) > 0  {
 		matches := []Match{}
 		for _, result := range acousticidresponse.Results {
-			//log.Info(reflect.TypeOf(result).Kind().String())
 			if result.Score > 0.7 && len(result.Recordings) > 0 &&  &result.Recordings[0].Title != nil && len(result.Recordings[0].Artists) > 0 && &result.Recordings[0].Artists[0].Name != nil {
 
 				match := &Match{}
@@ -87,10 +86,6 @@ func SetID3(acousticidresponse AcousticidResponse, file string, info os.FileInfo
 		}
 
 		//Find the best match
-		//Steps:
-		// Check score of the match
-		// Check score of the filename match
-		// If file name matches >
 		bestMatchIndex := 0
 		var bestMatch Match
 		if len(matches) > 1 {

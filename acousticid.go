@@ -47,7 +47,6 @@ func (a *AcousticidRequest) Request() AcousticidResponse {
 	defer response.Body.Close()
 	body, err := ioutil.ReadAll(response.Body)
 	aidresponse := AcousticidResponse{}
-	//fmt.Println("-------------->", string(body))
 	err = json.Unmarshal(body, &aidresponse)
 	check(err)
 	return aidresponse
